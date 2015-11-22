@@ -1,10 +1,5 @@
-all: build
-
-install-systemd-service:
-	sudo cp twitlistauth.service /etc/systemd/system/twitlistauth.service
-	sudo systemctl daemon-reload;
-	sudo systemctl stop twitlistauth.service; sudo systemctl start twitlistauth.service && sudo systemctl enable twitlistauth.service;
-
 build:
-	gb build all
-
+	GO15VENDOREXPERIMENT=1 glide up
+	GO15VENDOREXPERIMENT=1 \
+	CGO_ENABLED=0 \
+	go build -a -tags netgo -installsuffix nocgo -ldflags '-w' .

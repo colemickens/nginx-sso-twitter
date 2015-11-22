@@ -1,0 +1,9 @@
+[Unit]
+Description=Twitter List Auth File Server
+
+[Service]
+ExecStart=/home/cole/Code/colemickens/nginx-sso-twitter_gopath/src/github.com/colemickens/nginx-sso-twitter/nginx-sso-twitter \
+	-config /etc/nginx-sso-twitter/nginx-sso-twitter.json
+
+[Install]
+WantedBy=multi-user.target
